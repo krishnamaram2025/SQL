@@ -19,53 +19,49 @@ mysql -u root -p
 ```
 * Step 4: create database with name hacathon and Create a dedicated MySQL user and granting privilges
 ```
-CREATE DATABASE hackathon;
-CREATE USER 'hackathon'@'%' IDENTIFIED WITH mysql_native_password BY 'Hackathon@123';
-GRANT ALL ON *.* TO 'hackathon'@'%';
+CREATE DATABASE portfolio;
+CREATE USER 'portfolio'@'%' IDENTIFIED WITH mysql_native_password BY 'Portfolio@123';
+GRANT ALL ON *.* TO 'portfolio'@'%';
 FLUSH PRIVILEGES;
 ```
 * Step 5: Create table and perform CRUD operations
 ```
-CREATE TABLE hackathon.teams(
-                team_name VARCHAR(25) PRIMARY KEY,
-		member1 VARCHAR(25),
-		member2 VARCHAR(25),
-		member3 VARCHAR(25)
-                );
+CREATE TABLE portfolio.skills (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    skill_name VARCHAR(25),
+    stream_name VARCHAR(25)
+);
 ```
 ```				
-INSERT INTO hackathon.teams (
-	    team_name,
-	    member1,
-	    member2,
-            member3
+INSERT INTO portfolio.skills (
+	    skill_name,
+	    stream_name
 	    )
 	VALUES
 	(
-	    'teamA', 
-	    'sandeep', 
-	    'krishna',
-            'rachit'
+	    'FastAPI', 
+	    'Development'
 	) ,
-	    (
-	        'teamB', 
-	        'charan', 
-	        'amit',
-		'manan'
-	    );
-
+	  (
+	    'AWS', 
+	    'Operations'
+	) ,
+	(
+	    'Terraform', 
+	    'DevOps'
+	);
 ```
 ```
-select * from hackathon.teams;
+select * from portfolio.skills;
 ```
 ```
-UPDATE hackathon.teams
-SET member1 = 'amit'
-WHERE team_name = 'teamA';
+UPDATE portfolio.skills
+SET skill_name = 'Docker'
+WHERE stream_name = 'DevOps';
 ```
 ```
-DELETE FROM hackathon.teams
-WHERE team_name = 'teamA';
+DELETE FROM portfolio.skills
+WHERE skill_name = 'Docker';
 ```
 # Reference
 https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04
